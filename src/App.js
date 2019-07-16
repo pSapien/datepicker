@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import 'react-dates/initialize';
-import DesktopDateRangePickerWrapper from './DesktopDateRangePickerWrapper';
+import DateRangePickerWrapper from './DateRangePickerWrapper';
 import SingleDatePickerWrapper from './SingleDatePickerWrapper';
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
     <>
       <div>
         <div>Desktop DateRangePicker</div>
-        <DesktopDateRangePickerWrapper />
+        <DateRangePickerWrapper orientation="vertical" verticalHeight={568} />
       </div>
       <div>
         <div>Single DatePicker</div>

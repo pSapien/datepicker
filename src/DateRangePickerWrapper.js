@@ -19,7 +19,7 @@ import 'react-dates/lib/css/_datepicker.css';
  * for the implementation details
  */
 
-export default function DesktopDateRangePickerWrapper(props) {
+export default function DateRangePickerWrapper(props) {
   const {
     autoFocus,
     initialEndDate,
@@ -64,11 +64,12 @@ export default function DesktopDateRangePickerWrapper(props) {
       focusedInput={focusedInput}
       startDate={startDate}
       endDate={endDate}
+      readOnly
     />
   );
 }
 
-DesktopDateRangePickerWrapper.defaultProps = {
+DateRangePickerWrapper.defaultProps = {
   // example props for the demo
   autoFocus: false,
   autoFocusEndDate: false,
