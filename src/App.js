@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
 
-import 'react-dates/initialize';
-import DateRangePickerWrapper from './DateRangePickerWrapper';
-import SingleDatePickerWrapper from './SingleDatePickerWrapper';
+import DateRangeCalendar from './DateRangeCalendar';
+import FlatpickrDatePicker from './FlatpickrDatePicker';
+import BootstrapDateRangePicker from './BootstrapDateRangePicker';
+import BlueprintDateRangePicker from './BlueprintDateRangePicker';
 
 export default function App() {
   return (
-    <>
-      <div>
-        <div>Desktop DateRangePicker</div>
-        <DateRangePickerWrapper orientation="vertical" verticalHeight={568} />
-      </div>
-      <div>
-        <div>Single DatePicker</div>
-        <SingleDatePickerWrapper />
-      </div>
-    </>
+    <div>
+      <DateRangeCalendar />
+      <BootstrapDateRangePicker />
+      <FlatpickrDatePicker />
+      <BlueprintDateRangePicker />
+    </div>
   );
 }
