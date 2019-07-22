@@ -8,11 +8,13 @@
     "@syncfusion/ej2-react-calendars": "^17.2.35",
     "bootstrap": "3",
     "bootstrap-daterangepicker": "^3.0.5",
+    "dayjs": "^1.8.15",
     "flatpickr": "^4.6.2",
     "lodash": "^4.17.14",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-bootstrap-daterangepicker": "^4.1.0",
+    "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.6",
     "react-flatpickr": "^3.9.0",
     "react-scripts": "3.0.1"
@@ -37,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   }
 }
