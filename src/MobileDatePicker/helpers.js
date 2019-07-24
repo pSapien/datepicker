@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const DAYS_NAME = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const DAYS_NAME = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 const generate12MonthsDate = (date, numberOfMonths) =>
   Array.from({ length: numberOfMonths + 1 }).map(
