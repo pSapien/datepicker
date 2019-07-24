@@ -40,7 +40,7 @@ const getNumDaysInAMonth = (year, month) =>
 
 const getNumFirstDay = (year, numMonth) => new Date(year, numMonth, 1).getDay();
 
-const isDateInRange = (dateToCheck) => (startDate, endDate) => dateToCheck >= startDate && dateToCheck <= endDate
+const isDateInRange = (startDate, endDate) => (dateToCheck) => dateToCheck >= startDate && dateToCheck <= endDate
 
 const isSameDate = dateToBeChecked => date => moment(date).isSame(moment(dateToBeChecked));
 

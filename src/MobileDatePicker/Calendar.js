@@ -9,7 +9,7 @@ export default function Calendar(props) {
   
   const numFirstDay = getNumFirstDay(year, numMonth);
   const blanks = [];
-  
+
   for (let i = 0; i < numFirstDay; i++) {
     blanks.push(<td className="calendar-day" />);
   }
@@ -20,7 +20,7 @@ export default function Calendar(props) {
 
   for (let day = 1; day <= numDaysInAMonth; day++) {
     const dateObj = new Date(year, numMonth, day);
-    let classNames = ['calendar_date'];
+    const classNames = ['calendar__date'];
      
     const inRange = isDateInBetweenStartAndEndDate && isDateInBetweenStartAndEndDate(dateObj);
     if (inRange) classNames.push('date_range');

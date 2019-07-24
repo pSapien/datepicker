@@ -98,8 +98,8 @@ export default function CalendarWithModal(props) {
             </ModalBody>
             <ModalFooter>
               <p className="selected-date">
-                {getFormattedDate(startDate, endDate)}{' '}
-                {hasDates && `(${getDiff(startDate, endDate, format)} nights)`}
+                {getFormattedDate(startDate, endDate, format)}{' '}
+                {hasDates && `(${getDiff(startDate, endDate)} nights)`}
               </p>
               <Button disabled={!hasDates} onClick={handleDoneClick}>
                 Done
