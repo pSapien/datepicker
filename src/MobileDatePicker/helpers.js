@@ -7,8 +7,8 @@ const generate12MonthsDate = (date, numberOfMonths) =>
     (_, idx) => new Date(date.getFullYear(), date.getMonth() + idx)
   );
 
-const getFormattedDate = (startDate, endDate) => {
-  const format = date => moment(date).format('ddd D MMM');
+const getFormattedDate = (startDate, endDate, formatter) => {
+  const format = date => moment(date).format(formatter);
   let res = '';
 
   if (startDate) res = `${format(startDate)} - `;

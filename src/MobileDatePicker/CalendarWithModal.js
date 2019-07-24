@@ -5,20 +5,32 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Calendar from './Calendar';
 import { generate12MonthsDate, DAYS_NAME, getFormattedDate, getDiff } from './helpers';
 
+const TODAY = new Date();
 CalendarWithModal.defaultProps = {
-  minDate: new Date(),
+  minDate: TODAY,
   numberOfMonths: 12,
+  initialStartDate: null,
+  initialEndDate: null,
+  format: 'ddd D MMM',
+  isModalOpen: false,
+  toggleModal: () => { },
+  onDoneClick: () => { },
 };
 
-
 export default function CalendarWithModal(props) {
-  const [on, setOn] = React.useState(true);
-
-  const { minDate, numberOfMonths } = props;
-  const [startDate, setStartDate] = React.useState(null);
-  const [endDate, setEndDate] = React.useState(null);
-
-  const toggle = () => setOn(!on);
+  const {
+    minDate,
+    numberOfMonths,
+    initialStartDate,
+    initialEndDate,
+    format,
+    isModalOpen,
+    toggleModal,
+    onDoneClick,
+  } = props;
+  
+  const [startDate, setStartDate] = React.useState(initialStartDate);
+  const [endDate, setEndDate] = React.useState(initialEndDate);
 
   const dates = generate12MonthsDate(minDate, numberOfMonths);
 
@@ -36,12 +48,16 @@ export default function CalendarWithModal(props) {
     }
   };
 
+  function handleDoneClick() { 
+    onDoneClick(startDate, endDate);
+  }
+
   const hasDates = startDate && endDate;
 
   return (
     <>
-      <Button onClick={toggle}>Open calc</Button>
-      <Modal isOpen={on} toggle={toggle} className="calendar-modal">
+      <Button onClick={toggleModal}>Open calc</Button>
+      <Modal isOpen={isModalOpen} toggle={toggleModal} className="calendar-modal">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -72,15 +88,20 @@ export default function CalendarWithModal(props) {
             </div>
             <ModalBody>
               {dates.map(date => (
-                <Calendar date={date} onSelect={selectDates} startDate={startDate} endDate={endDate} />
+                <Calendar
+                  date={date}
+                  onSelect={selectDates}
+                  startDate={startDate}
+                  endDate={endDate}
+                />
               ))}
             </ModalBody>
             <ModalFooter>
               <p className="selected-date">
                 {getFormattedDate(startDate, endDate)}{' '}
-                {hasDates && `(${getDiff(startDate, endDate)} nights)`}
+                {hasDates && `(${getDiff(startDate, endDate, format)} nights)`}
               </p>
-              <Button disabled={!hasDates}>
+              <Button disabled={!hasDates} onClick={handleDoneClick}>
                 Done
               </Button>
             </ModalFooter>
