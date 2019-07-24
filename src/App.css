@@ -1,0 +1,79 @@
+.calendar-modal .modal-dialog{
+  margin: 0;
+}
+.calendar-modal .modal-content{
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+}
+.calendar-modal .modal-body{
+  /* padding: 3rem 1rem 5rem; */
+  padding: 4.5rem 1rem;
+}
+.calendar-modal .modal-header{
+  padding: 10px 1rem;
+  border: none;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+}
+.calendar-modal .modal-footer{
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  padding: 10px 1rem;
+}
+.calendar-modal .modal-footer p{
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+/* CALENDAR CSS */
+.calendar__vertical-header{
+  width: 100%;
+}
+.calendar__vertical-day-names{
+  width: 100%;
+}
+.calendar__row tr{
+  display: flex;
+  justify-content: space-between;
+}
+.calendar__wrapper{
+  display:flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.calendar__month_name{
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+.calendar__dates{
+  width: 100%;
+  font-size: 13px;
+}
+.calendar__date{
+  text-align: center;
+  padding: 4px 0px;
+}
+.calendar__date.date_range{
+  background-color:rgba(255,212,0,.2);
+}
+.calendar__date.start_date,
+.calendar__date.end_date{
+  background-color: #ffd400;
+  border-radius: 4px;
+}
+.calendar__date.past_date,
+.calendar__date.next_date{
+  color: #999;
+  cursor: not-allowed;
+}
