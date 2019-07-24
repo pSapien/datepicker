@@ -9,6 +9,7 @@ export default function Calendar(props) {
   
   const numFirstDay = getNumFirstDay(year, numMonth);
   const blanks = [];
+  
   for (let i = 0; i < numFirstDay; i++) {
     blanks.push(<td className="calendar-day" />);
   }
@@ -16,23 +17,23 @@ export default function Calendar(props) {
   const numDaysInAMonth = getNumDaysInAMonth(year, numMonth);
   const isDateInBetweenStartAndEndDate = startDate && endDate && isDateInRange(startDate, endDate);
   const daysInMonth = [];
-  for (let day = 1; day <= numDaysInAMonth; day++) {
-    const todayDateObj = new Date(year, numMonth, day);
-    
-    const inRange = isDateInBetweenStartAndEndDate && isDateInBetweenStartAndEndDate(todayDateObj);
-    const selectedClassName = inRange ? 'date_range' : '';
 
-    const isStartDate = isSameDate(startDate);
-    const isEndDate = isSameDate(endDate);
-    
-    const startDateClassName = isStartDate(todayDateObj) ? 'start_date' : '';
-    const endDateClassName = isEndDate(todayDateObj) ? 'end_date' : ''
+  for (let day = 1; day <= numDaysInAMonth; day++) {
+    const dateObj = new Date(year, numMonth, day);
+    let classNames = ['calendar_date'];
+     
+    const inRange = isDateInBetweenStartAndEndDate && isDateInBetweenStartAndEndDate(dateObj);
+    if (inRange) classNames.push('date_range');
+
+    const isDate = isSameDate(dateObj);
+    if (isDate(startDate)) classNames.push('start_date');
+    if (isDate(endDate)) classNames.push('end_date');
 
     daysInMonth.push(
       <td
         key={day}
-        className={`calendar__date ${selectedClassName} ${startDateClassName} ${endDateClassName}`}
-        onClick={() => onSelect(todayDateObj)}
+        className={classNames.join(' ')}
+        onClick={() => onSelect(dateObj)}
       >
         {day}
       </td>
