@@ -2,10 +2,10 @@ import React from 'react';
 import { MONTH_NAMES, getNumFirstDay, isDateInRange, getNumDaysInAMonth, isSameDate } from './helpers';
 
 export default function Calendar(props) {
-  const { date, onSelect, startDate, endDate } = props;
-  const numMonth = date.getMonth();
+  const { monthDate, onSelect, startDate, endDate } = props;
+  const numMonth = monthDate.getMonth();
   const monthName = MONTH_NAMES[numMonth];
-  const year = date.getFullYear();
+  const year = monthDate.getFullYear();
   
   const numFirstDay = getNumFirstDay(year, numMonth);
   const blanks = [];

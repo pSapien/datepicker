@@ -89,7 +89,7 @@ export default function CalendarWithModal(props) {
             <ModalBody>
               {dates.map(date => (
                 <Calendar
-                  date={date}
+                  monthDate={date}
                   onSelect={selectDates}
                   startDate={startDate}
                   endDate={endDate}
