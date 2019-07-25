@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 import Calendar from './Calendar';
-import { generate12MonthsDate, DAYS_NAME, getFormattedDate, getDiff } from './helpers';
+import { generate12MonthsDate, DAYS_NAME, getFormattedDate, getDiff, isSameDate } from './helpers';
 
 const TODAY = new Date();
 CalendarWithModal.defaultProps = {
@@ -42,8 +42,10 @@ export default function CalendarWithModal(props) {
     }
     
     const userHasAlreadySelectedDates = (startDate && endDate);
-    const endDateIsAfterStartDate = moment(startDate).isAfter(date);
-    if (userHasAlreadySelectedDates || endDateIsAfterStartDate) { 
+    const startDateIsAfterEndDate = moment(startDate).isAfter(date);
+    const endDateIsSameOfStartDate = isSameDate(startDate)(date);
+
+    if (userHasAlreadySelectedDates || startDateIsAfterEndDate || endDateIsSameOfStartDate) { 
       setStartDate(date);
       setEndDate(null);
 
