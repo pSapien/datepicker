@@ -40,12 +40,17 @@ export default function CalendarWithModal(props) {
 
       return;
     }
-
-    if (moment(startDate).isBefore(date)) {
-      setEndDate(date);
-    } else {
+    
+    const userHasAlreadySelectedDates = (startDate && endDate);
+    const endDateIsAfterStartDate = moment(startDate).isAfter(date);
+    if (userHasAlreadySelectedDates || endDateIsAfterStartDate) { 
       setStartDate(date);
+      setEndDate(null);
+
+      return;
     }
+ 
+   setEndDate(date);
   };
 
   function handleDoneClick() { 
