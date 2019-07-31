@@ -35,6 +35,8 @@ const MONTH_NAMES = [
     'Dec',
 ];
 
+const getAbbreviatedMonthName = monthNum => MONTH_NAMES[monthNum];
+
 const getNumDaysInAMonth = (year, month) =>
   new Date(year, month + 1, 0).getDate();
 
@@ -49,9 +51,9 @@ export {
   generate12MonthsDate,
   getFormattedDate,
   getDiff,
-  MONTH_NAMES,
   getNumDaysInAMonth,
   getNumFirstDay,
   isSameDate,
   isDateInRange,
+  getAbbreviatedMonthName,
  }

@@ -1,9 +1,20 @@
 import React from 'react';
 import moment from 'moment';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 
 import Calendar from './Calendar';
-import { generate12MonthsDate, DAYS_NAME, getFormattedDate, getDiff, isSameDate } from './helpers';
+import {
+  generate12MonthsDate,
+  DAYS_NAME,
+  getFormattedDate,
+  getDiff,
+  isSameDate,
+} from './helpers';
 
 const TODAY = new Date();
 CalendarWithModal.defaultProps = {
@@ -15,6 +26,9 @@ CalendarWithModal.defaultProps = {
   isModalOpen: false,
   toggleModal: () => { },
   onDoneClick: () => { },
+  showFormattedDate: (startDate, endDate, format) => getFormattedDate(startDate, endDate, format),
+  showNumNights: (startDate, endDate) => `(${getDiff(startDate, endDate)} nights)`,
+  buttonText: 'Done',
 };
 
 export default function CalendarWithModal(props) {
@@ -27,6 +41,9 @@ export default function CalendarWithModal(props) {
     isModalOpen,
     toggleModal,
     onDoneClick,
+    showNumNights,
+    showFormattedDate,
+    buttonText,
   } = props;
   
   const [startDate, setStartDate] = React.useState(initialStartDate);
@@ -105,11 +122,11 @@ export default function CalendarWithModal(props) {
             </ModalBody>
             <ModalFooter>
               <p className="selected-date">
-                {getFormattedDate(startDate, endDate, format)}{' '}
-                {hasDates && `(${getDiff(startDate, endDate)} nights)`}
+                {showFormattedDate(startDate, endDate, format)}{' '}
+                 {hasDates && showNumNights(startDate, endDate)}
               </p>
               <Button disabled={!hasDates} onClick={handleDoneClick}>
-                Done
+                {buttonText}
               </Button>
             </ModalFooter>
           </div>

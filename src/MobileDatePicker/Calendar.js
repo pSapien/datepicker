@@ -1,10 +1,17 @@
 import React from 'react';
-import { MONTH_NAMES, getNumFirstDay, isDateInRange, getNumDaysInAMonth, isSameDate } from './helpers';
+
+import {
+  getAbbreviatedMonthName,
+  getNumFirstDay,
+  isDateInRange,
+  getNumDaysInAMonth,
+  isSameDate,
+} from './helpers';
 
 export default function Calendar(props) {
   const { monthDate, onSelect, startDate, endDate } = props;
   const numMonth = monthDate.getMonth();
-  const monthName = MONTH_NAMES[numMonth];
+  const monthName = getAbbreviatedMonthName(numMonth);
   const year = monthDate.getFullYear();
   
   const numFirstDay = getNumFirstDay(year, numMonth);
@@ -50,9 +57,7 @@ export default function Calendar(props) {
       </div>
       <table className="calendar__dates">
         <tbody>
-          {rows.map(numDay => (
-            <tr>{numDay}</tr>
-          ))}
+          {rows.map(numDay => <tr>{numDay}</tr>)}
         </tbody>
       </table>
     </div>
