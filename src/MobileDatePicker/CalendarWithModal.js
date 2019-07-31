@@ -19,7 +19,7 @@ import {
 const TODAY = new Date();
 CalendarWithModal.defaultProps = {
   minDate: TODAY,
-  numberOfMonths: 12,
+  numMonths: 12,
   initialStartDate: null,
   initialEndDate: null,
   format: 'ddd D MMM',
@@ -34,7 +34,7 @@ CalendarWithModal.defaultProps = {
 export default function CalendarWithModal(props) {
   const {
     minDate,
-    numberOfMonths,
+    numMonths,
     initialStartDate,
     initialEndDate,
     format,
@@ -49,7 +49,7 @@ export default function CalendarWithModal(props) {
   const [startDate, setStartDate] = React.useState(initialStartDate);
   const [endDate, setEndDate] = React.useState(initialEndDate);
 
-  const dates = generate12MonthsDate(minDate, numberOfMonths);
+  const dates = generate12MonthsDate(minDate, numMonths);
 
   const selectDates = date => {
     if (!startDate) {
