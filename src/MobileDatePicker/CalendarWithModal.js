@@ -43,9 +43,9 @@ export default function CalendarWithModal(props) {
     
     const userHasAlreadySelectedDates = (startDate && endDate);
     const startDateIsAfterEndDate = moment(startDate).isAfter(date);
-    const endDateIsSameOfStartDate = isSameDate(startDate)(date);
+    const startDateIsSameOfEndDate = isSameDate(startDate)(date);
 
-    if (userHasAlreadySelectedDates || startDateIsAfterEndDate || endDateIsSameOfStartDate) { 
+    if (userHasAlreadySelectedDates || startDateIsAfterEndDate || startDateIsSameOfEndDate) { 
       setStartDate(date);
       setEndDate(null);
 
