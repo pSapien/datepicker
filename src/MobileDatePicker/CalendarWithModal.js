@@ -72,15 +72,15 @@ export default function CalendarWithModal(props) {
    setEndDate(date);
   };
 
-  function handleDoneClick() { 
+  function handleDoneClick() {
     onDoneClick(startDate, endDate);
+    toggleModal();
   }
-
+  
   const hasDates = startDate && endDate;
 
   return (
     <>
-      <Button onClick={toggleModal}>Open calc</Button>
       <Modal isOpen={isModalOpen} toggle={toggleModal} className="calendar-modal">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">

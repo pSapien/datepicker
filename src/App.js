@@ -1,17 +1,27 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import moment from 'moment';
+import MobileDateRangePickerInput from './MobileDatePicker/MobileDateRangePickerInput';
 
-import CalendarWithModal from './MobileDatePicker/CalendarWithModal';
+const formatDate = date => moment(date).format('DD MMM YYYY');
 
 export default function App() {
-  const [on, setIsOn] = React.useState(false);
+  const [startDate, setStartDate] = React.useState(null);
+  const [endDate, setEndDate] = React.useState(null);
 
-  const toggle = () => setIsOn(!on);
+  function handleDoneClick(startDate, endDate) { 
+    setStartDate(formatDate(startDate));
+    setEndDate(formatDate(endDate));
+  };
 
   return (
     <div>
-      <CalendarWithModal toggleModal={toggle} isModalOpen={on}/>
+      <MobileDateRangePickerInput
+        initialStartDate={startDate}
+        initialEndDate={endDate}
+        onDoneClick={handleDoneClick}
+      />
     </div>
   );
 }
