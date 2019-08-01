@@ -1,6 +1,10 @@
-.calendar-modal .modal-dialog{
+.calendar-modal.modal-dialog{
   margin: 0;
 }
+.calendar-modal.modal-dialog .modal-content .modal-dialog{
+  margin: 0;
+}
+
 .calendar-modal .modal-content{
   margin: 0;
   border: none;
@@ -13,12 +17,21 @@
 }
 .calendar-modal .modal-header{
   padding: 10px 1rem;
-  border: none;
   flex-direction: column;
   position: fixed;
   width: 100%;
   z-index: 1;
   background-color: #fff;
+  top: 0;
+}
+.calendar-modal .modal-header .modal-title{
+  order: 1;
+  width: 100%;
+  margin-top: 10px;
+}
+.calendar-modal .modal-header .close{
+  padding: 0.5rem 1rem;
+  margin-left: auto;
 }
 .calendar-modal .modal-footer{
   justify-content: center;
