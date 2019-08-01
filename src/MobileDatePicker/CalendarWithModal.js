@@ -26,10 +26,10 @@ CalendarWithModal.defaultProps = {
   format: 'ddd D MMM',
   isModalOpen: false,
   toggleModal: () => { },
-  onDoneClick: () => { },
+  onApply: () => { },
   showFormattedDate: (startDate, endDate, format) => getFormattedDate(startDate, endDate, format),
   showNumNights: (startDate, endDate) => `(${getDiff(startDate, endDate)} nights)`,
-  buttonText: 'Done',
+  buttonText: 'Apply',
 };
 
 export default function CalendarWithModal(props) {
@@ -41,7 +41,7 @@ export default function CalendarWithModal(props) {
     format,
     isModalOpen,
     toggleModal,
-    onDoneClick,
+    onApply,
     showNumNights,
     showFormattedDate,
     buttonText,
@@ -74,7 +74,7 @@ export default function CalendarWithModal(props) {
   };
 
   function handleDoneClick() {
-    onDoneClick(startDate, endDate);
+    onApply(startDate, endDate);
     toggleModal();
   }
   

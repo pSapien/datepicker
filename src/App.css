@@ -11,10 +11,12 @@
   border-radius: 0;
   width: 100%;
 }
+
 .calendar-modal .modal-body{
   /* padding: 3rem 1rem 5rem; */
   padding: 4.5rem 1rem;
 }
+
 .calendar-modal .modal-header{
   padding: 10px 1rem;
   flex-direction: column;

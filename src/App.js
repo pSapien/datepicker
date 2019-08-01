@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment';
-import MobileDateRangePickerInput from './MobileDatePicker/MobileDateRangePickerInput';
+import DateRangePickerInput from './MobileDatePicker/DateRangePickerInput';
 
 const formatDate = date => moment(date).format('DD MMM YYYY');
 
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <div>
-      <MobileDateRangePickerInput
+      <DateRangePickerInput
         initialStartDate={startDate}
         initialEndDate={endDate}
         onDoneClick={handleDoneClick}
