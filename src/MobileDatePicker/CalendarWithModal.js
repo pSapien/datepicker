@@ -4,6 +4,7 @@ import {
   Button,
   Modal,
   ModalBody,
+  ModalHeader,
   ModalFooter
 } from 'reactstrap';
 
@@ -82,55 +83,40 @@ export default function CalendarWithModal(props) {
   return (
     <>
       <Modal isOpen={isModalOpen} toggle={toggleModal} className="calendar-modal">
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalCenterTitle">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <div className="calendar__vertical-header">
-                <table className="calendar__vertical-day-names">
-                  <thead className="calendar__row">
-                    <tr>
-                      {DAYS_NAME.map(dayName => (
-                        <th className="calendar__day-name" key={dayName}>
-                          {dayName}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-            </div>
-            <ModalBody>
-              {dates.map(date => (
-                <Calendar
-                  monthDate={date}
-                  onSelect={selectDates}
-                  startDate={startDate}
-                  endDate={endDate}
-                />
-              ))}
-            </ModalBody>
-            <ModalFooter>
-              <p className="selected-date">
-                {showFormattedDate(startDate, endDate, format)}{' '}
-                 {hasDates && showNumNights(startDate, endDate)}
-              </p>
-              <Button disabled={!hasDates} onClick={handleDoneClick}>
-                {buttonText}
-              </Button>
-            </ModalFooter>
+        <ModalHeader toggle={toggleModal}>
+          <div className="calendar__vertical-header">
+            <table className="calendar__vertical-day-names">
+              <thead className="calendar__row">
+                <tr>
+                  {DAYS_NAME.map(dayName => (
+                    <th className="calendar__day-name" key={dayName}>
+                      {dayName}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            </table>
           </div>
-        </div>
+        </ModalHeader>
+        <ModalBody>
+          {dates.map(date => (
+            <Calendar
+              monthDate={date}
+              onSelect={selectDates}
+              startDate={startDate}
+              endDate={endDate}
+            />
+          ))}
+        </ModalBody>
+        <ModalFooter>
+          <p className="selected-date">
+            {showFormattedDate(startDate, endDate, format)}{' '}
+              {hasDates && showNumNights(startDate, endDate)}
+          </p>
+          <Button disabled={!hasDates} onClick={handleDoneClick} size="sm">
+            {buttonText}
+          </Button>
+        </ModalFooter>
       </Modal>
     </>
   );
